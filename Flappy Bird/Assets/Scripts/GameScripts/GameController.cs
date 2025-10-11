@@ -57,7 +57,7 @@ public class GameController : MonoBehaviour
         // birdMovement.birdRB.freezeRotation = true;
         rb.linearVelocity = new Vector3(0f, birdMovement.flapForce, 0f);
 
-        if (pipeSpawningCounter > 0) return; 
+        // if (pipeSpawningCounter > 0) return; 
         pipeController.StartWaitForSpawn();
     }
 

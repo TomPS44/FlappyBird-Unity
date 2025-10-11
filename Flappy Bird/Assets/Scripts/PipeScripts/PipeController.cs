@@ -41,7 +41,7 @@ public class PipeController : MonoBehaviour
 
     public void StartWaitForSpawn()
     {
-        gameController.pipeSpawningCounter++;
+        // gameController.pipeSpawningCounter++;
 
         StartCoroutine(WaitForSpawn());
     }
@@ -51,6 +51,6 @@ public class PipeController : MonoBehaviour
         if (!isFinished) SpawnPipe();
 
         yield return new WaitForSeconds(2f);
-        yield return StartCoroutine(WaitForSpawn());
+        if (!isFinished) yield return StartCoroutine(WaitForSpawn());
     }
 }

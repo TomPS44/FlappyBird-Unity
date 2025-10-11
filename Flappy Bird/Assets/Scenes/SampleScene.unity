@@ -1189,6 +1189,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pipeController: {fileID: 1712529287}
   birdMovement: {fileID: 1712529286}
+  animClip: {fileID: 7400000, guid: e306b0d9632dc7941973359e9df1480f, type: 2}
   bird: {fileID: 6616034702404734388, guid: e772ebd73e3b69d44b1bccf4ca2867e7, type: 3}
   gameIsPlaying: 0
   gameIsFinished: 0
