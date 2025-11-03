@@ -67,5 +67,6 @@
         "*.sln": "*.csproj",
         "*.slnx": "*.csproj"
     },
-    "dotnet.defaultSolution": "Flappy Bird.slnx"
+    "dotnet.defaultSolution": "Flappy Bird.slnx",
+
 }

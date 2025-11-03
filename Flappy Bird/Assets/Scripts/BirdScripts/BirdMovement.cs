@@ -51,7 +51,7 @@ public class BirdMovement : MonoBehaviour
         // -----------------------------------------------
         //             handles start idle
         // -----------------------------------------------
-
+        
 
         current = Mathf.MoveTowards(current, target, speed * Time.deltaTime);
 
