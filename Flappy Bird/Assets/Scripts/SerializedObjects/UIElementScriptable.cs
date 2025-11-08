@@ -1,14 +1,10 @@
+using Microsoft.Unity.VisualStudio.Editor;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "UIElementScriptable", menuName = "Scriptable Objects/UIElement")]
-public class UIElementScriptable : ScriptableObject
+[CreateAssetMenu(fileName = "UIElementFlappyBird", menuName = "Scriptable Objects/UIElement")]
+public class CustomUIElement : ScriptableObject
 {
-    public Vector3 hiddenPosition;
-    public Vector3 showedPosition;
+    public Image image;
 
-    public AnimationCurve animCurve;
-
-    public bool isInPosition;
-
-    public float speed;
+    public Vector3 targetPos;
 }

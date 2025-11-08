@@ -689,7 +689,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 117, y: -93.5}
+  m_AnchoredPosition: {x: 33.5, y: 261}
   m_SizeDelta: {x: 33, y: 33}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &567882103
@@ -1298,6 +1298,106 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 20, y: 1.63}
   m_EdgeRadius: 0
+--- !u!1 &1094261295
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1094261297}
+  - component: {fileID: 1094261296}
+  - component: {fileID: 1094261298}
+  m_Layer: 0
+  m_Name: UIScripts
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1094261296
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1094261295}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6c38b43180b6a44ab070816f6f2f717, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UIController
+  medals:
+  - {fileID: 567882103}
+  - {fileID: 852373519}
+  - {fileID: 947135679}
+  customCollection:
+    image: {fileID: 567882103}
+    button: {fileID: 1432225499}
+    targetPos: {x: 368, y: -491, z: 0}
+    speed: 2
+    animCurve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 0
+        inSlope: 2
+        outSlope: 2
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 0.030142691
+        value: 0.9227211
+        inSlope: 0.16983925
+        outSlope: 0.16983925
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.1288986
+      - serializedVersion: 3
+        time: 1
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    collectionType: 2
+--- !u!4 &1094261297
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1094261295}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 10, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1094261298
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1094261295}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e519d5ccd2c3d6b4286b5fc5e3184446, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UIHelper
 --- !u!1 &1232050608
 GameObject:
   m_ObjectHideFlags: 0
@@ -1393,7 +1493,6 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 435931553}
-  - {fileID: 909491528}
   - {fileID: 1366926150}
   - {fileID: 1432225498}
   - {fileID: 1878528803}
@@ -1405,6 +1504,7 @@ RectTransform:
   - {fileID: 567882102}
   - {fileID: 852373518}
   - {fileID: 947135678}
+  - {fileID: 909491528}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -1657,7 +1757,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 368, y: -491}
+  m_AnchoredPosition: {x: 368, y: -756}
   m_SizeDelta: {x: 80, y: 32}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1432225499
@@ -1920,7 +2020,7 @@ GameObject:
   - component: {fileID: 1712529286}
   - component: {fileID: 1712529289}
   m_Layer: 0
-  m_Name: Scripts
+  m_Name: GameScripts
   m_TagString: Scripts
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2224,3 +2324,4 @@ SceneRoots:
   - {fileID: 1817784974}
   - {fileID: 283595683}
   - {fileID: 1712529288}
+  - {fileID: 1094261297}
