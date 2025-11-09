@@ -8,39 +8,38 @@ using UnityEngine.UI;
 
 public class UIController : MonoBehaviour
 {
-    // public CustomCollection parameters;
-
-    // [SerializeField] private GameController gameController;
-
-
     [SerializeField] private Image[] medals = new Image[3];
-    public CustomCollection customCollection;
+    [SerializeField] private CustomCollection medalsParameters;
 
-    /*
+    [Space]
 
     [SerializeField] private Image[] gameOver = new Image[2];
+    [SerializeField] private CustomCollection[] gameOverParameters = new CustomCollection[2];
+
+    [Space]
+
     [SerializeField] private Image[] getReady = new Image[2];
+    [SerializeField] private CustomCollection[] getReadyParameters = new CustomCollection[2];
+
+    [Space]
 
     [SerializeField] private Image mainFrame;
+    [SerializeField] private CustomCollection mainFrameParameters;
+
+    [Space]
+
     [SerializeField] private Image imageNew;
+    [SerializeField] private CustomCollection imageNewParameters;
+
+    [Space]
+
     [SerializeField] private Button playAgain;
+    [SerializeField] private CustomCollection playAgainParameters;
+
+    [Space]
+
     [SerializeField] private Button mainMenu;
-
-
-    private void Start()
-    {
-        parameters = new CustomCollection(medals[2], new Vector3(0f, 1f, 2f), 4.5f);
-
-        UIHelper.CallCustomLerp(parameters);
-    }
-
-    */
-
-    public void Test()
-    {
-        UIHelper.CallCustomLerp(customCollection);
-    }
-
+    [SerializeField] private CustomCollection mainMenuParameters;
 }
 
 
