@@ -1,3 +1,4 @@
+using System;
 using UnityEditor.SearchService;
 using UnityEngine;
 
@@ -15,14 +16,13 @@ public class GameController : MonoBehaviour
 
     public bool gameIsPlaying;
     public bool gameIsFinished;
-    
-    [HideInInspector] public int pipeSpawningCounter;
-    
+
+
+    public Action OnPlayerLose;
+
 
     void Start()
     {
-        pipeSpawningCounter = 0;
-
         gameIsPlaying = false;
         gameIsFinished = false;
 
@@ -48,7 +48,7 @@ public class GameController : MonoBehaviour
         gameIsPlaying = true;
         gameIsFinished = false;
 
-        // ajoute le rb à l'oiseau et l'assigne à une valeur
+        // ajoute le rb ï¿½ l'oiseau et l'assigne ï¿½ une valeur
         birdMovement.bird.AddComponent<Rigidbody2D>();
         Rigidbody2D rb = birdMovement.bird.GetComponent<Rigidbody2D>();
 
@@ -71,6 +71,6 @@ public class GameController : MonoBehaviour
         birdMovement.bird = Instantiate(bird, Vector3.zero, Quaternion.identity);
 
         animator = bird.GetComponentInChildren<Animator>();
-        animator.SetBool("isFinished", false);
+        // animator.SetBool("isFinished", false);
     }
 }

@@ -36,7 +36,7 @@ public class LerpAssetEditor : Editor
 
         if (GUILayout.Button("Lerp"))
         {
-            controller.Test();
+            controller.CallTest();
         }
     }
 }
@@ -93,8 +93,6 @@ public class CustomCollectionDrawer : PropertyDrawer
             SerializedProperty typeOfCollection = property.FindPropertyRelative("collectionType");
             // variable storing the type of collection (from the CollectionType enum)
             CustomCollection.CollectionType collectionType = (CustomCollection.CollectionType)typeOfCollection.enumValueIndex;
-
-            targetPos.vector3Value = tempTargetPos;
 
             // ---------------------------Fields--------------------------------
 

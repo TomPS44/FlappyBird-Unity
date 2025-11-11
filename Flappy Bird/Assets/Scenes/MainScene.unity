@@ -145,7 +145,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7965709}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: -1}
   m_LocalScale: {x: 6, y: 6, z: 6}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -153,7 +153,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -42.5}
+  m_AnchoredPosition: {x: 0, y: 885}
   m_SizeDelta: {x: 157, y: 85}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &7965711
@@ -442,7 +442,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 436.5, y: 354}
+  m_AnchoredPosition: {x: 436.5, y: 745}
   m_SizeDelta: {x: 84, y: 48}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &422646133
@@ -672,7 +672,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &567882102
 RectTransform:
   m_ObjectHideFlags: 0
@@ -831,7 +831,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &839304364
 RectTransform:
   m_ObjectHideFlags: 0
@@ -906,7 +906,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &852373518
 RectTransform:
   m_ObjectHideFlags: 0
@@ -981,7 +981,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &909491528
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1056,7 +1056,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &947135678
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1328,6 +1328,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d6c38b43180b6a44ab070816f6f2f717, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UIController
+  gameController: {fileID: 1712529289}
   medals:
   - {fileID: 567882103}
   - {fileID: 852373519}
@@ -1356,51 +1357,123 @@ MonoBehaviour:
       m_RotationOrder: 4
     collectionType: 0
   gameParameters:
-  - image: {fileID: 0}
+  - image: {fileID: 1513882626}
     button: {fileID: 0}
-    targetPos: {x: 0, y: 0, z: 0}
-    speed: 0
+    targetPos: {x: -402, y: 320, z: 0}
+    speed: 0.65
     animCurve:
       serializedVersion: 2
-      m_Curve: []
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    collectionType: 0
-  - image: {fileID: 0}
-    button: {fileID: 0}
-    targetPos: {x: 0, y: 0, z: 0}
-    speed: 0
-    animCurve:
-      serializedVersion: 2
-      m_Curve: []
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    collectionType: 0
-  overParameters:
-  - image: {fileID: 0}
-    button: {fileID: 0}
-    targetPos: {x: 0, y: 0, z: 0}
-    speed: 0
-    animCurve:
-      serializedVersion: 2
-      m_Curve: []
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 0
+        inSlope: 2
+        outSlope: 2
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 1
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
     collectionType: 1
-  - image: {fileID: 0}
+  - image: {fileID: 1513882626}
     button: {fileID: 0}
-    targetPos: {x: 0, y: 0, z: 0}
-    speed: 0
+    targetPos: {x: -402, y: 745, z: 0}
+    speed: 1
     animCurve:
       serializedVersion: 2
-      m_Curve: []
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 0
+        inSlope: 2
+        outSlope: 2
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 1
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    collectionType: 0
+    collectionType: 1
+  overParameters:
+  - image: {fileID: 422646133}
+    button: {fileID: 0}
+    targetPos: {x: 436, y: 320, z: 0}
+    speed: 0.65
+    animCurve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 1
+        value: 1
+        inSlope: 2
+        outSlope: 2
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    collectionType: 1
+  - image: {fileID: 422646133}
+    button: {fileID: 0}
+    targetPos: {x: 436, y: 745, z: 0}
+    speed: 1
+    animCurve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 1
+        value: 1
+        inSlope: 2
+        outSlope: 2
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    collectionType: 1
   getParameters:
   - image: {fileID: 0}
     button: {fileID: 0}
@@ -1448,28 +1521,64 @@ MonoBehaviour:
       m_RotationOrder: 4
     collectionType: 0
   mainFrameParameters:
-  - image: {fileID: 0}
+  - image: {fileID: 7965711}
     button: {fileID: 0}
-    targetPos: {x: 0, y: 0, z: 0}
-    speed: 0
+    targetPos: {x: 0, y: -92.5, z: 0}
+    speed: 1
     animCurve:
       serializedVersion: 2
-      m_Curve: []
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 1
+        value: 1
+        inSlope: 2
+        outSlope: 2
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    collectionType: 0
-  - image: {fileID: 0}
+    collectionType: 1
+  - image: {fileID: 7965711}
     button: {fileID: 0}
-    targetPos: {x: 0, y: 0, z: 0}
-    speed: 0
+    targetPos: {x: 0, y: 885, z: 0}
+    speed: 1
     animCurve:
       serializedVersion: 2
-      m_Curve: []
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 1
+        value: 1
+        inSlope: 2
+        outSlope: 2
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    collectionType: 0
+    collectionType: 1
   imageNewParameters:
   - image: {fileID: 0}
     button: {fileID: 0}
@@ -1494,51 +1603,123 @@ MonoBehaviour:
       m_RotationOrder: 4
     collectionType: 0
   playAgainbuttonParameters:
-  - image: {fileID: 0}
-    button: {fileID: 0}
-    targetPos: {x: 0, y: 0, z: 0}
-    speed: 0
+  - image: {fileID: 1432225500}
+    button: {fileID: 1432225499}
+    targetPos: {x: 418, y: -491, z: 0}
+    speed: 1
     animCurve:
       serializedVersion: 2
-      m_Curve: []
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 1
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    collectionType: 0
+    collectionType: 3
   - image: {fileID: 0}
-    button: {fileID: 0}
-    targetPos: {x: 0, y: 0, z: 0}
-    speed: 0
+    button: {fileID: 1432225499}
+    targetPos: {x: 418, y: -731, z: 0}
+    speed: 1
     animCurve:
       serializedVersion: 2
-      m_Curve: []
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 1
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    collectionType: 0
+    collectionType: 3
   mainMenuButtonParameters:
   - image: {fileID: 0}
-    button: {fileID: 0}
-    targetPos: {x: 0, y: 0, z: 0}
-    speed: 0
+    button: {fileID: 1366926151}
+    targetPos: {x: -318, y: -491, z: 0}
+    speed: 1
     animCurve:
       serializedVersion: 2
-      m_Curve: []
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 1
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    collectionType: 0
+    collectionType: 3
   - image: {fileID: 0}
-    button: {fileID: 0}
-    targetPos: {x: 0, y: 0, z: 0}
-    speed: 0
+    button: {fileID: 1366926151}
+    targetPos: {x: -318, y: -731, z: 0}
+    speed: 1
     animCurve:
       serializedVersion: 2
-      m_Curve: []
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 1
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    collectionType: 0
+    collectionType: 3
 --- !u!4 &1094261297
 Transform:
   m_ObjectHideFlags: 0
@@ -1666,9 +1847,9 @@ RectTransform:
   - {fileID: 1878528803}
   - {fileID: 2127773443}
   - {fileID: 839304364}
+  - {fileID: 7965710}
   - {fileID: 1513882625}
   - {fileID: 422646132}
-  - {fileID: 7965710}
   - {fileID: 567882102}
   - {fileID: 852373518}
   - {fileID: 947135678}
@@ -1715,7 +1896,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -223, y: -491}
+  m_AnchoredPosition: {x: -318, y: -731}
   m_SizeDelta: {x: 80, y: 32}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1366926151
@@ -1748,7 +1929,7 @@ MonoBehaviour:
     m_FadeDuration: 0.1
   m_SpriteState:
     m_HighlightedSprite: {fileID: 0}
-    m_PressedSprite: {fileID: 2013261503205373015, guid: b0fba5a8b21991e42a96979cfd576f3d, type: 3}
+    m_PressedSprite: {fileID: -3293369096081220498, guid: 125358dd95f40be43bfb6446f27e8bc2, type: 3}
     m_SelectedSprite: {fileID: 0}
     m_DisabledSprite: {fileID: 0}
   m_AnimationTriggers:
@@ -1782,7 +1963,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 8894201953851282084, guid: b0fba5a8b21991e42a96979cfd576f3d, type: 3}
+  m_Sprite: {fileID: -6107261474803722753, guid: 125358dd95f40be43bfb6446f27e8bc2, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1925,7 +2106,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 368, y: -756}
+  m_AnchoredPosition: {x: 418, y: -731}
   m_SizeDelta: {x: 80, y: 32}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1432225499
@@ -1958,7 +2139,7 @@ MonoBehaviour:
     m_FadeDuration: 0.1
   m_SpriteState:
     m_HighlightedSprite: {fileID: 0}
-    m_PressedSprite: {fileID: 3760674464881954987, guid: b0fba5a8b21991e42a96979cfd576f3d, type: 3}
+    m_PressedSprite: {fileID: 8320377962904488152, guid: 125358dd95f40be43bfb6446f27e8bc2, type: 3}
     m_SelectedSprite: {fileID: 0}
     m_DisabledSprite: {fileID: 0}
   m_AnimationTriggers:
@@ -1971,7 +2152,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1432225500}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1094261296}
+        m_TargetAssemblyTypeName: UIController, Assembly-CSharp
+        m_MethodName: StartDespawnLossScreen
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1432225500
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1992,7 +2185,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 7664807735657788756, guid: b0fba5a8b21991e42a96979cfd576f3d, type: 3}
+  m_Sprite: {fileID: 3136895673728081502, guid: 125358dd95f40be43bfb6446f27e8bc2, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -2044,7 +2237,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -394, y: 354}
+  m_AnchoredPosition: {x: -402, y: 745}
   m_SizeDelta: {x: 84, y: 48}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1513882626
@@ -2285,7 +2478,6 @@ MonoBehaviour:
   bird: {fileID: 6616034702404734388, guid: e772ebd73e3b69d44b1bccf4ca2867e7, type: 3}
   gameIsPlaying: 0
   gameIsFinished: 0
-  pipeSpawningCounter: 0
 --- !u!1 &1817784971
 GameObject:
   m_ObjectHideFlags: 0
@@ -2417,7 +2609,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &2127773443
 RectTransform:
   m_ObjectHideFlags: 0

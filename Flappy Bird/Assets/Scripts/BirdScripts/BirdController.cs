@@ -23,7 +23,9 @@ public class BirdController : MonoBehaviour
         if (collision.CompareTag("Death"))
         {
             gameController.gameIsFinished = true;
-            animator.SetBool("isFinished", true);
+            // animator.SetBool("isFinished", true);
+
+            gameController.OnPlayerLose?.Invoke();
         }
     }
 }
