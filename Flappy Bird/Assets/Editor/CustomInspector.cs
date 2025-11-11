@@ -1,3 +1,4 @@
+using System;
 using Unity.Properties;
 using Unity.VisualScripting;
 using UnityEditor;
@@ -47,10 +48,20 @@ public class CustomCollectionDrawer : PropertyDrawer
 {
     private bool isFolderOpen;
 
+
+    // this other line is also useless, it was used to create a style that modified the font of folder 
+    // private GUIStyle style = new GUIStyle();
+
+
     public override void OnGUI(Rect position, SerializedProperty property, GUIContent label)
     {
+        // the line below is useless, it was just used to set the font of the folder to normal instead of bold
+        // but it causes another issue that I don't know how to fix :)
+        // style.fontStyle = FontStyle.Normal;
+
+
         // creates a folder that is open if "isFolderOpen" is true 
-        isFolderOpen = EditorGUI.BeginFoldoutHeaderGroup(position, isFolderOpen, "CustomCollection");
+        isFolderOpen = EditorGUI.BeginFoldoutHeaderGroup(position, isFolderOpen, property.displayName);
 
         // make the inspector appear if the folder is open, and handles all the fields, the variables...
         if (isFolderOpen)
@@ -83,6 +94,7 @@ public class CustomCollectionDrawer : PropertyDrawer
             // variable storing the type of collection (from the CollectionType enum)
             CustomCollection.CollectionType collectionType = (CustomCollection.CollectionType)typeOfCollection.enumValueIndex;
 
+            targetPos.vector3Value = tempTargetPos;
 
             // ---------------------------Fields--------------------------------
 
@@ -93,6 +105,7 @@ public class CustomCollectionDrawer : PropertyDrawer
             // field that displays the enum
             EditorGUI.PropertyField(collectionTypeRect, typeOfCollection);
 
+            bool defaultWideMode = EditorGUIUtility.wideMode;
 
             // switch that makes certains fields appear or not, depending on the type of the collection
             switch (collectionType)
@@ -102,8 +115,13 @@ public class CustomCollectionDrawer : PropertyDrawer
                     Rect imageRect = new Rect(position.x, position.y + EditorGUIUtility.singleLineHeight * 3f, position.width, position.height);
                     EditorGUI.PropertyField(imageRect, image);
 
+
+                    EditorGUIUtility.wideMode = true;
+
                     Rect targetPosRect = new Rect(position.x, position.y + EditorGUIUtility.singleLineHeight * 5f, position.width, position.height);
                     EditorGUI.PropertyField(targetPosRect, targetPos);
+
+                    EditorGUIUtility.wideMode = defaultWideMode;
 
 
                     Rect speedRect = new Rect(position.x, position.y + EditorGUIUtility.singleLineHeight * 6.5f, position.width, position.height);
@@ -120,8 +138,13 @@ public class CustomCollectionDrawer : PropertyDrawer
                     EditorGUI.PropertyField(curveRect, animCurve);
 
 
+                    EditorGUIUtility.wideMode = true;
+
                     Rect targetPosRect2 = new Rect(position.x, position.y + EditorGUIUtility.singleLineHeight * 6.5f, position.width, position.height);
                     EditorGUI.PropertyField(targetPosRect2, targetPos);
+
+                    EditorGUIUtility.wideMode = defaultWideMode;
+
 
                     Rect speedRect2 = new Rect(position.x, position.y + EditorGUIUtility.singleLineHeight * 8f, position.width, position.height);
                     EditorGUI.PropertyField(speedRect2, speed);
@@ -133,8 +156,14 @@ public class CustomCollectionDrawer : PropertyDrawer
                     Rect buttonRect = new Rect(position.x, position.y + EditorGUIUtility.singleLineHeight * 3f, position.width, position.height);
                     EditorGUI.PropertyField(buttonRect, button);
 
+
+                    EditorGUIUtility.wideMode = true;
+
                     Rect targetPosRect3 = new Rect(position.x, position.y + EditorGUIUtility.singleLineHeight * 5f, position.width, position.height);
                     EditorGUI.PropertyField(targetPosRect3, targetPos);
+
+                    EditorGUIUtility.wideMode = defaultWideMode;
+
 
                     Rect speedRect3 = new Rect(position.x, position.y + EditorGUIUtility.singleLineHeight * 6.5f, position.width, position.height);
                     EditorGUI.PropertyField(speedRect3, speed);
@@ -149,14 +178,28 @@ public class CustomCollectionDrawer : PropertyDrawer
                     Rect curveRect2 = new Rect(position.x, position.y + EditorGUIUtility.singleLineHeight * 4.5f, position.width, position.height);
                     EditorGUI.PropertyField(curveRect2, animCurve);
 
+
+                    EditorGUIUtility.wideMode = true;
+
                     Rect targetPosRect4 = new Rect(position.x, position.y + EditorGUIUtility.singleLineHeight * 6.5f, position.width, position.height);
                     EditorGUI.PropertyField(targetPosRect4, targetPos);
+
+                    EditorGUIUtility.wideMode = defaultWideMode;
+
 
                     Rect speedRect4 = new Rect(position.x, position.y + EditorGUIUtility.singleLineHeight * 8f, position.width, position.height);
                     EditorGUI.PropertyField(speedRect4, speed);
 
                     break;
             }
+
+            // GUILayout.Space(EditorGUIUtility.singleLineHeight * 2f);
+
+            // Rect trueTargetPosRect = new Rect(position.x, position.y, position.width, position.height);
+            // EditorGUI.PropertyField(trueTargetPosRect, targetPos);
+
+            // Rect trueSpeedRect4 = new Rect(position.x, position.y + EditorGUIUtility.singleLineHeight * 5.5f, position.width, position.height);
+            // EditorGUI.PropertyField(trueSpeedRect4, speed);
 
 
             // and specifies the end of the folder

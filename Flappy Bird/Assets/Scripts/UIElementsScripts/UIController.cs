@@ -9,37 +9,33 @@ using UnityEngine.UI;
 public class UIController : MonoBehaviour
 {
     [SerializeField] private Image[] medals = new Image[3];
-    [SerializeField] private CustomCollection medalsParameters;
+    [SerializeField] private CustomCollection[] medalsParameters = new CustomCollection[2];
 
     [Space]
 
-    [SerializeField] private Image[] gameOver = new Image[2];
-    [SerializeField] private CustomCollection[] gameOverParameters = new CustomCollection[2];
+    [SerializeField] private CustomCollection[] gameParameters = new CustomCollection[2];
+    [SerializeField] private CustomCollection[] overParameters = new CustomCollection[2];
 
     [Space]
 
-    [SerializeField] private Image[] getReady = new Image[2];
-    [SerializeField] private CustomCollection[] getReadyParameters = new CustomCollection[2];
+    [SerializeField] private CustomCollection[] getParameters = new CustomCollection[2];
+    [SerializeField] private CustomCollection[] readyParameters = new CustomCollection[2];
 
     [Space]
 
-    [SerializeField] private Image mainFrame;
-    [SerializeField] private CustomCollection mainFrameParameters;
+    [SerializeField] private CustomCollection[] mainFrameParameters = new CustomCollection[2];
 
     [Space]
 
-    [SerializeField] private Image imageNew;
-    [SerializeField] private CustomCollection imageNewParameters;
+    [SerializeField] private CustomCollection[] imageNewParameters = new CustomCollection[2];
 
     [Space]
 
-    [SerializeField] private Button playAgain;
-    [SerializeField] private CustomCollection playAgainParameters;
+    [SerializeField] private CustomCollection[] playAgainbuttonParameters = new CustomCollection[2];
 
     [Space]
 
-    [SerializeField] private Button mainMenu;
-    [SerializeField] private CustomCollection mainMenuParameters;
+    [SerializeField] private CustomCollection[] mainMenuButtonParameters = new CustomCollection[2];
 }
 
 
