@@ -42,8 +42,12 @@ public class UIController : MonoBehaviour
     [SerializeField] private CustomCollection[] mainMenuButtonParameters = new CustomCollection[2];
 
 
+    public bool fadePipes;
+
     private void Start()
     {
+        fadePipes = false;
+
         gameController.OnPlayerLose += StartSpawnLossScreen;
     }
 
@@ -119,6 +123,10 @@ public class UIController : MonoBehaviour
         yield return new WaitForSeconds(0.5f);
 
         UIHelper.CallCustomLerp(mainFrameParameters[1]);
+
+        fadePipes = true;
+        yield return new WaitForSeconds(1f / 60f);
+        fadePipes = false;
 
         yield return new WaitForSeconds(2f);
 

@@ -21,10 +21,14 @@ public class GameController : MonoBehaviour
     public Action OnPlayerLose;
 
 
+    public int playerScore;
+
     void Start()
     {
         gameIsPlaying = false;
         gameIsFinished = false;
+
+        playerScore = 0;
 
         birdMovement.bird = Instantiate(bird, Vector3.zero, Quaternion.identity);
     }
@@ -70,7 +74,7 @@ public class GameController : MonoBehaviour
 
         birdMovement.bird = Instantiate(bird, Vector3.zero, Quaternion.identity);
 
-        animator = bird.GetComponentInChildren<Animator>();
+        // animator = bird.GetComponentInChildren<Animator>();
         // animator.SetBool("isFinished", false);
     }
 }

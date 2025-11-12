@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Scripts
   - Death
+  - Score
   layers:
   - Default
   - TransparentFX

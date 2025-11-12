@@ -23,20 +23,17 @@ public class RestartGameEditor : Editor
 
 
 /*
-[CustomEditor(typeof(UIController))]
+[CustomEditor(typeof(UIHelper))]
 public class LerpAssetEditor : Editor
 {
     public override void OnInspectorGUI()
     {
         base.OnInspectorGUI();
-        UIController controller = (UIController)target;
-
-        GUILayout.Space(50f);
-
+        UIHelper helper = (UIHelper)target;
 
         if (GUILayout.Button("Lerp"))
         {
-            controller.CallTest();
+            UIHelper.CallFade(helper.go, helper.speed);
         }
     }
 }

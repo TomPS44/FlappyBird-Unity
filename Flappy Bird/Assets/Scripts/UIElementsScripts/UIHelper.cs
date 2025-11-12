@@ -3,19 +3,20 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.UI;
 using Unity.VisualScripting;
+using System;
 
 public class UIHelper : MonoBehaviour
 {
     public static UIHelper Instance;
-    
-    private void Awake() 
+
+    private void Awake()
     {
         if (Instance != null)
         {
             Debug.LogError("Plus d'un instance pas bien :( :(,   /!\\");
             return;
         }
-        
+
         Instance = this;
     }
 
@@ -43,7 +44,7 @@ public class UIHelper : MonoBehaviour
             case CustomCollection.CollectionType.ButtonPlusCurve: // Calls custom lerp si CustomCollections est ButtonPlusCurve
                 Instance.StartCoroutine(Instance.CustomLerp(parameters.button, parameters.targetPos, parameters.speed, parameters.animCurve));
                 break;
-            
+
         }
     }
 
@@ -179,4 +180,30 @@ public class UIHelper : MonoBehaviour
 
     #endregion
 
+    public static void CallFade(GameObject gameObjectToFade, float speed, bool isChildren)
+    {
+        UIHelper.Instance.StartCoroutine(UIHelper.Instance.Fade(gameObjectToFade, speed, isChildren));
+    }
+
+    private IEnumerator Fade(GameObject gameObjectToFade, float speed, bool isChildren)
+    {
+        float current = 1f;
+        float target = 0f;
+
+        SpriteRenderer sp = isChildren ? gameObjectToFade.GetComponentInChildren<SpriteRenderer>() : gameObjectToFade.GetComponent<SpriteRenderer>();
+
+        // sp.color = new Color(sp.color.r, sp.color.g, sp.color.b, 1f);
+
+        while (current > 0.05f)
+        {
+            current = Mathf.MoveTowards(current, target, speed * Time.deltaTime);
+
+            sp.color = new Color(sp.color.r, sp.color.g, sp.color.b, current);
+
+
+            yield return null;
+        }
+
+        yield break;
+    }
 }

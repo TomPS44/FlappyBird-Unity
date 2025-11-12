@@ -1,10 +1,12 @@
+using NUnit.Framework;
 using UnityEngine;
 
 public class PipeMovement : MonoBehaviour
 {
     private GameController gameController;
     private PipeController pipeController;
-    [SerializeField] private GameObject scripts;
+    private UIController UIController;
+    private GameObject scripts;
     private float moveSpeed;
     private bool isPlaying;
     private bool isFinished;
@@ -14,6 +16,7 @@ public class PipeMovement : MonoBehaviour
         scripts = GameObject.FindWithTag("Scripts");
         pipeController = scripts.GetComponent<PipeController>();
         gameController = scripts.GetComponent<GameController>();
+        UIController = GameObject.Find("UIScripts").GetComponent<UIController>();
     }
 
     void Update()
@@ -29,6 +32,11 @@ public class PipeMovement : MonoBehaviour
 
     private void MovePipe()
     {
+        if (UIController.fadePipes)
+        {
+            UIHelper.CallFade(this.gameObject, 0.5f, false); 
+        }
+
         if (!isPlaying || isFinished) return;
 
         Vector3 target = new Vector3(this.transform.position.x - (moveSpeed * Time.deltaTime),
@@ -47,5 +55,7 @@ public class PipeMovement : MonoBehaviour
             Destroy(this.gameObject);
         }
     }
+
+   
 
 }
