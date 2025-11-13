@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine.UI;
 using Unity.VisualScripting;
 using System;
+using TMPro;
 
 public class UIHelper : MonoBehaviour
 {
@@ -184,6 +185,10 @@ public class UIHelper : MonoBehaviour
     {
         UIHelper.Instance.StartCoroutine(UIHelper.Instance.Fade(gameObjectToFade, speed, isChildren));
     }
+    public static void CallFade(TextMeshProUGUI textToFade, float speed)
+    {
+        UIHelper.Instance.StartCoroutine(UIHelper.Instance.Fade(textToFade, speed));
+    }
 
     private IEnumerator Fade(GameObject gameObjectToFade, float speed, bool isChildren)
     {
@@ -199,6 +204,26 @@ public class UIHelper : MonoBehaviour
             current = Mathf.MoveTowards(current, target, speed * Time.deltaTime);
 
             sp.color = new Color(sp.color.r, sp.color.g, sp.color.b, current);
+
+
+            yield return null;
+        }
+
+        yield break;
+    }
+
+    private IEnumerator Fade(TextMeshProUGUI textToFade, float speed)
+    {
+        float current = 1f;
+        float target = 0f;
+
+        // sp.color = new Color(sp.color.r, sp.color.g, sp.color.b, 1f);
+
+        while (current > 0.01f)
+        {
+            current = Mathf.MoveTowards(current, target, speed * Time.deltaTime);
+
+            textToFade.color = new Color(textToFade.color.r, textToFade.color.g, textToFade.color.b, current);
 
 
             yield return null;

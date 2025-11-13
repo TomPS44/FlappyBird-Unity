@@ -6,6 +6,7 @@ public class GameController : MonoBehaviour
 {
     [SerializeField] private PipeController pipeController;
     [SerializeField] private BirdMovement birdMovement;
+    [SerializeField] private ScoreHandler scoreHandler;
 
     public AnimationClip animClip;
 
@@ -21,14 +22,10 @@ public class GameController : MonoBehaviour
     public Action OnPlayerLose;
 
 
-    public int playerScore;
-
     void Start()
     {
         gameIsPlaying = false;
         gameIsFinished = false;
-
-        playerScore = 0;
 
         birdMovement.bird = Instantiate(bird, Vector3.zero, Quaternion.identity);
     }
@@ -39,11 +36,6 @@ public class GameController : MonoBehaviour
         if (!gameIsPlaying && Input.GetMouseButtonDown(0) && !gameIsFinished)
         {
             StartGame();
-        }
-        
-        if (Input.GetKeyDown(KeyCode.R))
-        {
-            RestartGame();
         }
     }
 
@@ -72,7 +64,12 @@ public class GameController : MonoBehaviour
         gameIsPlaying = false;
         gameIsFinished = false;
 
+        
+
         birdMovement.bird = Instantiate(bird, Vector3.zero, Quaternion.identity);
+
+        scoreHandler.ResetScore();
+        scoreHandler.DisplayScore();
 
         // animator = bird.GetComponentInChildren<Animator>();
         // animator.SetBool("isFinished", false);
