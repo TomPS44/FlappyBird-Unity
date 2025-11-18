@@ -5,6 +5,7 @@ using UnityEngine.UI;
 using Unity.VisualScripting;
 using System;
 using TMPro;
+using UnityEngineInternal;
 
 public class UIHelper : MonoBehaviour
 {
@@ -181,14 +182,22 @@ public class UIHelper : MonoBehaviour
 
     #endregion
 
+    #region FadeFunctions
+
+    // -------------------------------------------------------------------------------
+    //                             Fade functions 
+    // --------------------------------------------------------------------------------
+
     public static void CallFade(GameObject gameObjectToFade, float speed, bool isChildren)
     {
         UIHelper.Instance.StartCoroutine(UIHelper.Instance.Fade(gameObjectToFade, speed, isChildren));
     }
+    /*
     public static void CallFade(TextMeshProUGUI textToFade, float speed)
     {
         UIHelper.Instance.StartCoroutine(UIHelper.Instance.Fade(textToFade, speed));
     }
+    */
 
     private IEnumerator Fade(GameObject gameObjectToFade, float speed, bool isChildren)
     {
@@ -212,7 +221,7 @@ public class UIHelper : MonoBehaviour
         yield break;
     }
 
-    private IEnumerator Fade(TextMeshProUGUI textToFade, float speed)
+    public static  IEnumerator Fade(TextMeshProUGUI textToFade, float speed)
     {
         float current = 1f;
         float target = 0f;
@@ -231,4 +240,106 @@ public class UIHelper : MonoBehaviour
 
         yield break;
     }
+
+    public static void CallFadeToTransparent(GameObject gameObjectToFade, float speed, bool isChildren)
+    {
+        UIHelper.Instance.StartCoroutine(UIHelper.Instance.FadeToApparent(gameObjectToFade, speed, isChildren));
+    }
+    /*
+    public static void CallFadeToTransparent(TextMeshProUGUI textToFade, float speed)
+    {
+        UIHelper.Instance.StartCoroutine(UIHelper.Instance.FadeToApparent(textToFade, speed));
+    }
+    */
+
+    private IEnumerator FadeToApparent(GameObject gameObjectToFade, float speed, bool isChildren)
+    {
+        float current = 0f;
+        float target = 1f;
+
+        SpriteRenderer sp = isChildren ? gameObjectToFade.GetComponentInChildren<SpriteRenderer>() : gameObjectToFade.GetComponent<SpriteRenderer>();
+
+        // sp.color = new Color(sp.color.r, sp.color.g, sp.color.b, 1f);
+
+        while (current < 0.95f)
+        {
+            current = Mathf.MoveTowards(current, target, speed * Time.deltaTime);
+
+            sp.color = new Color(sp.color.r, sp.color.g, sp.color.b, current);
+
+
+            yield return null;
+        }
+
+        yield break;
+    }
+    public static IEnumerator FadeToApparent(TextMeshProUGUI textToFade, float speed)
+    {
+        float current = 0f;
+        float target = 1f;
+
+        // sp.color = new Color(sp.color.r, sp.color.g, sp.color.b, 1f);
+
+        while (current < 0.99f)
+        {
+            current = Mathf.MoveTowards(current, target, speed * Time.deltaTime);
+
+            textToFade.color = new Color(textToFade.color.r, textToFade.color.g, textToFade.color.b, current);
+
+
+            yield return null;
+        }
+
+        yield break;
+    }
+
+
+    #endregion
+
+    #region ScoreFunctions
+
+    public static IEnumerator CustomIncreaseScore(TextMeshProUGUI scoreText, int scoreToDisplay)
+    {
+        float current = 0;
+
+        while (Convert.ToInt32(scoreText.text) < scoreToDisplay)
+        {
+            current = Mathf.MoveTowards(current, (float)scoreToDisplay, (scoreToDisplay / 3f) * Time.deltaTime);
+
+            UIHelper.DisplayTemporaryScore(scoreText, (int)current);
+
+            yield return null;
+        }
+
+        yield break;
+    }
+
+
+
+    public static void DisplayTemporaryScore(TextMeshProUGUI scoreText, int playerScore)
+    {
+        string scoreString;
+
+        if (playerScore > 99)
+        {
+            scoreString = playerScore.ToString();
+        }
+        else if (playerScore > 9)
+        {
+            scoreString = "0" + playerScore.ToString();
+        }
+        else
+        {
+            scoreString = "00" + playerScore.ToString();
+        }
+
+        scoreText.text = scoreString;
+    }
+
+
+
+
+    #endregion
+
+
 }

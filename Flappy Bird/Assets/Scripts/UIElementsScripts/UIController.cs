@@ -1,6 +1,8 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Reflection;
+using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
@@ -10,6 +12,7 @@ using static System.Runtime.CompilerServices.RuntimeHelpers;
 public class UIController : MonoBehaviour
 {
     [SerializeField] private GameController gameController;
+    [SerializeField] private ScoreHandler scoreHandler;
 
 
     [SerializeField] private Image[] medals = new Image[3];
@@ -41,14 +44,24 @@ public class UIController : MonoBehaviour
 
     [SerializeField] private CustomCollection[] mainMenuButtonParameters = new CustomCollection[2];
 
+    [SerializeField] private GameObject tempPlayerScore;
+    private TextMeshProUGUI tempPlayerScoreText;
 
     public bool fadePipes;
+
 
     private void Start()
     {
         fadePipes = false;
 
         gameController.OnPlayerLose += StartSpawnLossScreen;
+
+
+        tempPlayerScoreText = tempPlayerScore.GetComponent<TextMeshProUGUI>();
+        tempPlayerScoreText.color = new Color(tempPlayerScoreText.color.r,    
+                                              tempPlayerScoreText.color.g,
+                                              tempPlayerScoreText.color.b,
+                                              0f);   
     }
 
     /*
@@ -82,6 +95,8 @@ public class UIController : MonoBehaviour
     }
     */
 
+
+
     private void StartSpawnLossScreen()
     {
         StartCoroutine(SpawnLossScreen());
@@ -102,6 +117,12 @@ public class UIController : MonoBehaviour
 
         yield return new WaitForSeconds(1.5f);
 
+        yield return StartCoroutine(UIHelper.FadeToApparent(tempPlayerScoreText, 0.5f));
+
+
+        yield return StartCoroutine(UIHelper.CustomIncreaseScore(tempPlayerScoreText, scoreHandler.playerScore));
+        // DO NOT FORGET TO DISPLAY THE SCORE
+        // /!\ /!\ /!\ /!\ /!\
 
         UIHelper.CallCustomLerp(mainMenuButtonParameters[0]);
 
@@ -122,6 +143,13 @@ public class UIController : MonoBehaviour
 
         yield return new WaitForSeconds(0.5f);
 
+        yield return StartCoroutine(UIHelper.Fade(tempPlayerScoreText, 1f));
+
+        tempPlayerScoreText.text = "000";
+
+        // DO NOT FORGET TO RESET THE SCORE
+        // /!\ /!\ /!\ /!\ /!\
+
         UIHelper.CallCustomLerp(mainFrameParameters[1]);
 
         fadePipes = true;
@@ -131,6 +159,23 @@ public class UIController : MonoBehaviour
         yield return new WaitForSeconds(2f);
 
         gameController.RestartGame();
+    }
+
+
+
+
+
+
+
+
+    public void ResetTempTexts()
+    {
+        tempPlayerScoreText.color = new Color(tempPlayerScoreText.color.r,    
+                                              tempPlayerScoreText.color.g,
+                                              tempPlayerScoreText.color.b,
+                                              0f);  
+
+        tempPlayerScoreText.fontSize = 50; 
     }
 }
 

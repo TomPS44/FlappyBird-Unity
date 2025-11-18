@@ -6,6 +6,7 @@ public class GameController : MonoBehaviour
 {
     [SerializeField] private PipeController pipeController;
     [SerializeField] private BirdMovement birdMovement;
+    [SerializeField] private UIController UIController;
     [SerializeField] private ScoreHandler scoreHandler;
 
     public AnimationClip animClip;
@@ -70,6 +71,8 @@ public class GameController : MonoBehaviour
 
         scoreHandler.ResetScore();
         scoreHandler.DisplayScore();
+
+        UIController.ResetTempTexts();
 
         // animator = bird.GetComponentInChildren<Animator>();
         // animator.SetBool("isFinished", false);

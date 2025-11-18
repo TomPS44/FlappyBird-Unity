@@ -58,7 +58,7 @@ public class ScoreHandler : MonoBehaviour
 
     public void FadeScore()
     {
-        UIHelper.CallFade(scoreText, 0.75f);
+        StartCoroutine(UIHelper.Fade(scoreText, 0.75f));
     }
 
 
