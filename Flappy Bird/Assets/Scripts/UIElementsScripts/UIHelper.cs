@@ -298,22 +298,58 @@ public class UIHelper : MonoBehaviour
 
     #region ScoreFunctions
 
+    // public static IEnumerator CustomIncreaseScore(TextMeshProUGUI scoreText, int scoreToDisplay)
+    // {
+    //     float current = 0;
+
+    //     while (Convert.ToInt32(scoreText.text) < scoreToDisplay)
+    //     {
+    //         current = Mathf.Lerp(current, scoreToDisplay, scoreToDisplay * (scoreToDisplay / 2f) * Time.deltaTime);
+
+    //         UIHelper.DisplayTemporaryScore(scoreText, (int)current);
+
+    //         yield return null;
+    //     }
+
+    //     yield break;
+    // }
+
     public static IEnumerator CustomIncreaseScore(TextMeshProUGUI scoreText, int scoreToDisplay)
     {
-        float current = 0;
+        float elapsed = 0f;
+        float startScore = 0f;
 
-        while (Convert.ToInt32(scoreText.text) < scoreToDisplay)
+        // Durée adaptative
+        float baseDuration = 0.5f;
+        float durationPerPoint = 0.02f;
+        float duration = baseDuration + scoreToDisplay * durationPerPoint;
+
+        // AnimationCurve "easing out" : rapide au début, lent à la fin
+        AnimationCurve curve = new AnimationCurve(
+            new Keyframe(0f, 0f, 2f, 2f),      // Début rapide
+            new Keyframe(0.6f, 0.85f, 0f, 0f), // Fin de montée rapide
+            new Keyframe(0.75f, 0.92f, 0f, 0f), 
+            new Keyframe(0.85f, 0.96f, 0f, 0f),
+            new Keyframe(0.92f, 0.98f, 0f, 0f),
+            new Keyframe(0.97f, 0.995f, 0f, 0f),
+            new Keyframe(1f, 1f, 0f, 0f)        // Fin très douce
+        );
+
+        while (elapsed < duration)
         {
-            current = Mathf.MoveTowards(current, (float)scoreToDisplay, (scoreToDisplay / 3f) * Time.deltaTime);
+            elapsed += Time.deltaTime;
+            float t = Mathf.Clamp01(elapsed / duration);
+            float curveValue = curve.Evaluate(t);
 
-            UIHelper.DisplayTemporaryScore(scoreText, (int)current);
+            int currentScore = Mathf.RoundToInt(Mathf.Lerp(startScore, scoreToDisplay, curveValue));
+            DisplayTemporaryScore(scoreText, currentScore);  /*scoreText.text = currentScore.ToString();*/ 
 
             yield return null;
         }
 
-        yield break;
+        // S'assurer que le score final est bien affiché
+        DisplayTemporaryScore(scoreText, scoreToDisplay);
     }
-
 
 
     public static void DisplayTemporaryScore(TextMeshProUGUI scoreText, int playerScore)

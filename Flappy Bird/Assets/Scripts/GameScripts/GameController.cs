@@ -58,6 +58,8 @@ public class GameController : MonoBehaviour
 
         // if (pipeSpawningCounter > 0) return; 
         pipeController.StartWaitForSpawn();
+
+        scoreHandler.DisplayScore();
     }
 
     public void RestartGame()

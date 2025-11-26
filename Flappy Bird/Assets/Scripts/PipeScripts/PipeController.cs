@@ -50,7 +50,7 @@ public class PipeController : MonoBehaviour
     {
         if (!isFinished) SpawnPipe();
 
-        yield return new WaitForSeconds(moveSpeed / 1.5f);
+        yield return new WaitForSeconds(2f);
         if (!isFinished) yield return StartCoroutine(WaitForSpawn());
     }
 }

@@ -117,7 +117,7 @@ public class UIController : MonoBehaviour
 
         yield return new WaitForSeconds(1.5f);
 
-        yield return StartCoroutine(UIHelper.FadeToApparent(tempPlayerScoreText, 0.5f));
+        yield return StartCoroutine(UIHelper.FadeToApparent(tempPlayerScoreText, 0.75f));
 
 
         yield return StartCoroutine(UIHelper.CustomIncreaseScore(tempPlayerScoreText, scoreHandler.playerScore));
