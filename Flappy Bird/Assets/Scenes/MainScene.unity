@@ -429,8 +429,8 @@ SpriteRenderer:
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
-  m_DrawMode: 0
-  m_Size: {x: 20, y: 1}
+  m_DrawMode: 2
+  m_Size: {x: 21, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -975,6 +975,56 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &693429515
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 693429517}
+  - component: {fileID: 693429516}
+  m_Layer: 0
+  m_Name: BackgroundScripts
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &693429516
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 693429515}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 212899259782c044f8690a3e29746bbb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BackgroundHandler
+  pipeController: {fileID: 1712529287}
+  backgrounds:
+  - {fileID: 1003538135}
+  - {fileID: 1606235140}
+  - {fileID: 1405496607}
+  - {fileID: 246715986}
+--- !u!4 &693429517
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 693429515}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.60563, y: -0.01223, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &839304363
 GameObject:
   m_ObjectHideFlags: 0
@@ -1333,9 +1383,9 @@ BoxCollider2D:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
     oldSize: {x: 20, y: 1.625}
-    newSize: {x: 20, y: 1.625}
+    newSize: {x: 21, y: 1.625}
     adaptiveTilingThreshold: 0.5
-    drawMode: 0
+    drawMode: 2
     adaptiveTiling: 0
   m_AutoTiling: 0
   m_Size: {x: 20, y: 1.63}
@@ -1391,8 +1441,8 @@ SpriteRenderer:
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
-  m_DrawMode: 0
-  m_Size: {x: 20, y: 1.625}
+  m_DrawMode: 2
+  m_Size: {x: 21, y: 1.625}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -1452,9 +1502,9 @@ BoxCollider2D:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
     oldSize: {x: 20, y: 1.625}
-    newSize: {x: 20, y: 1.625}
+    newSize: {x: 21, y: 1.625}
     adaptiveTilingThreshold: 0.5
-    drawMode: 0
+    drawMode: 2
     adaptiveTiling: 0
   m_AutoTiling: 0
   m_Size: {x: 20, y: 1.63}
@@ -2369,8 +2419,8 @@ SpriteRenderer:
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
-  m_DrawMode: 0
-  m_Size: {x: 20, y: 1.75}
+  m_DrawMode: 2
+  m_Size: {x: 21, y: 1.75}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -2666,8 +2716,8 @@ SpriteRenderer:
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
-  m_DrawMode: 0
-  m_Size: {x: 20, y: 11.25}
+  m_DrawMode: 2
+  m_Size: {x: 21, y: 11.25}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -3007,3 +3057,4 @@ SceneRoots:
   - {fileID: 283595683}
   - {fileID: 1712529288}
   - {fileID: 1094261297}
+  - {fileID: 693429517}

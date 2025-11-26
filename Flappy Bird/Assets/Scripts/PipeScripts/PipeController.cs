@@ -24,7 +24,7 @@ public class PipeController : MonoBehaviour
 
     private void SpawnPipe()
     {
-        // crée le spawn point du top pipe
+        // crï¿½e le spawn point du top pipe
         Vector3 temporarySpawnPoint = new Vector3(10f, Random.Range(1f, -3f), 0f);
 
         // spawn the top pipe
@@ -50,7 +50,7 @@ public class PipeController : MonoBehaviour
     {
         if (!isFinished) SpawnPipe();
 
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(moveSpeed / 1.5f);
         if (!isFinished) yield return StartCoroutine(WaitForSpawn());
     }
 }
