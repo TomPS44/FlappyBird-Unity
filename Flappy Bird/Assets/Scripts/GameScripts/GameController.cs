@@ -30,6 +30,8 @@ public class GameController : MonoBehaviour
         gameIsPlaying = false;
         gameIsFinished = false;
 
+        scoreHandler.scoreText.text = "";
+
         birdMovement.bird = Instantiate(bird, Vector3.zero, Quaternion.identity);
     }
 
@@ -74,9 +76,11 @@ public class GameController : MonoBehaviour
         birdMovement.bird = Instantiate(bird, Vector3.zero, Quaternion.identity);
 
         scoreHandler.ResetScore();
-        scoreHandler.DisplayScore();
 
         UIController.ResetTempTexts();
+        UIController.ResetUIs();
+
+        scoreHandler.scoreText.text = "";
         // backgroundHandler.ResetBackgrounds();
 
         // animator = bird.GetComponentInChildren<Animator>();

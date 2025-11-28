@@ -221,7 +221,7 @@ public class UIHelper : MonoBehaviour
         yield break;
     }
 
-    public static  IEnumerator Fade(TextMeshProUGUI textToFade, float speed)
+    public static IEnumerator Fade(TextMeshProUGUI textToFade, float speed)
     {
         float current = 1f;
         float target = 0f;
@@ -322,7 +322,7 @@ public class UIHelper : MonoBehaviour
         // Durée adaptative
         float baseDuration = 0.5f;
         float durationPerPoint = 0.02f;
-        float duration = baseDuration + scoreToDisplay * durationPerPoint;
+        float duration = Mathf.Clamp(baseDuration + scoreToDisplay * durationPerPoint, baseDuration, 4.5f);
 
         // AnimationCurve "easing out" : rapide au début, lent à la fin
         AnimationCurve curve = new AnimationCurve(

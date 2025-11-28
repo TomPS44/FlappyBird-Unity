@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Reflection;
+using System.Threading.Tasks;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -11,11 +12,12 @@ using static System.Runtime.CompilerServices.RuntimeHelpers;
 
 public class UIController : MonoBehaviour
 {
+    [Header("Scripts References")]
     [SerializeField] private GameController gameController;
     [SerializeField] private ScoreHandler scoreHandler;
 
-
-    [SerializeField] private Image[] medals = new Image[3];
+    [Header("GameObjects")]
+    [SerializeField] private Image[] medals = new Image[4];
     [SerializeField] private CustomCollection[] medalsParameters = new CustomCollection[2];
 
     [Space]
@@ -44,10 +46,12 @@ public class UIController : MonoBehaviour
 
     [SerializeField] private CustomCollection[] mainMenuButtonParameters = new CustomCollection[2];
 
+    [Space]
+
     [SerializeField] private GameObject tempPlayerScore;
     private TextMeshProUGUI tempPlayerScoreText;
 
-    public bool fadePipes;
+    [HideInInspector] public bool fadePipes;
 
 
     private void Start()
@@ -58,10 +62,13 @@ public class UIController : MonoBehaviour
 
 
         tempPlayerScoreText = tempPlayerScore.GetComponent<TextMeshProUGUI>();
-        tempPlayerScoreText.color = new Color(tempPlayerScoreText.color.r,    
-                                              tempPlayerScoreText.color.g,
-                                              tempPlayerScoreText.color.b,
-                                              0f);   
+        // tempPlayerScoreText.color = new Color(tempPlayerScoreText.color.r,    
+        //                                       tempPlayerScoreText.color.g,
+        //                                       tempPlayerScoreText.color.b,
+        //                                       0f); 
+        
+        ResetTempTexts();
+        ResetUIs();  
     }
 
     /*
@@ -124,6 +131,8 @@ public class UIController : MonoBehaviour
         // DO NOT FORGET TO DISPLAY THE SCORE
         // /!\ /!\ /!\ /!\ /!\
 
+        yield return StartCoroutine(SpawnMedal());
+
         UIHelper.CallCustomLerp(mainMenuButtonParameters[0]);
 
         yield return new WaitForSeconds(0.25f);
@@ -144,6 +153,7 @@ public class UIController : MonoBehaviour
         yield return new WaitForSeconds(0.5f);
 
         yield return StartCoroutine(UIHelper.Fade(tempPlayerScoreText, 1f));
+        yield return StartCoroutine(ResetMedal());
 
         tempPlayerScoreText.text = "000";
 
@@ -161,8 +171,63 @@ public class UIController : MonoBehaviour
         gameController.RestartGame();
     }
 
+    public IEnumerator SpawnMedal()
+    {
+        Image medal;
 
+        // assigns an image to the medal, depending on the score (if statements going from gold medal to no medal)
+        if (scoreHandler.playerScore >= 50)
+        {
+            medal = medals[0];
+        }
+        else if (scoreHandler.playerScore >= 35)
+        {
+            medal = medals[1];
+        }
+        else if (scoreHandler.playerScore >= 20)
+        {
+            medal = medals[2];
+        }
+        else
+        {
+            medal = medals[3];
+        }
+        
 
+        medalsParameters[0].image = medal;
+        medalsParameters[1].image = medal;
+
+        UIHelper.CallCustomLerp(medalsParameters[0]);
+
+        yield return new WaitForSeconds(1f);
+    }
+    public IEnumerator ResetMedal()
+    {
+        UIHelper.CallCustomLerp(medalsParameters[1]);
+
+        yield return new WaitForSeconds(scoreHandler.playerScore > 20 ? 1f : 0f);
+    }
+
+    public void ResetUIs()
+    {
+        // reset the position of every UI element (  so that I don't have to do it myself :)  )
+        gameParameters[0].image.rectTransform.anchoredPosition3D = gameParameters[1].targetPos;
+        overParameters[0].image.rectTransform.anchoredPosition3D = overParameters[1].targetPos;
+        mainFrameParameters[0].image.rectTransform.anchoredPosition3D = mainFrameParameters[1].targetPos;
+        playAgainbuttonParameters[0].image.rectTransform.anchoredPosition3D = playAgainbuttonParameters[1].targetPos;
+        mainFrameParameters[0].image.rectTransform.anchoredPosition3D = mainFrameParameters[1].targetPos;
+
+        // reset also the medals, but the code is a bit longer since there are three 
+        for (int i = 0; i < medals.Length; i++)
+        {
+            // sets the medal active ( in  case I forgot to do it :) )
+            medals[i].gameObject.SetActive(true);
+            // and assigns an image to the parameters of the medals (to not cause an error), to then reset the position
+            medalsParameters[0].image = medals[i];
+            medalsParameters[0].image.rectTransform.anchoredPosition3D = medalsParameters[1].targetPos;
+        }
+        
+    }
 
 
 

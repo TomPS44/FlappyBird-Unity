@@ -8,7 +8,7 @@ public class ScoreHandler : MonoBehaviour
     
     public int playerScore;
 
-    [SerializeField] private TextMeshProUGUI scoreText;
+    public TextMeshProUGUI scoreText;
 
 
     void Start()
