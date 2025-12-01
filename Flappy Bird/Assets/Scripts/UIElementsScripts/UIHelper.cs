@@ -192,6 +192,10 @@ public class UIHelper : MonoBehaviour
     {
         UIHelper.Instance.StartCoroutine(UIHelper.Instance.Fade(gameObjectToFade, speed, isChildren));
     }
+    public static void CallFade(Image imageToFade, float speed)
+    {
+        UIHelper.Instance.StartCoroutine(UIHelper.Instance.Fade(imageToFade, speed));
+    }
     /*
     public static void CallFade(TextMeshProUGUI textToFade, float speed)
     {
@@ -220,6 +224,25 @@ public class UIHelper : MonoBehaviour
 
         yield break;
     }
+    private IEnumerator Fade(Image imageToFade, float speed)
+    {
+        float current = 1f;
+        float target = 0f;
+
+        // sp.color = new Color(sp.color.r, sp.color.g, sp.color.b, 1f);
+
+        while (current > 0.05f)
+        {
+            current = Mathf.MoveTowards(current, target, speed * Time.deltaTime);
+
+            imageToFade.color = new Color(imageToFade.color.r, imageToFade.color.g, imageToFade.color.b, current);
+
+
+            yield return null;
+        }
+
+        yield break;
+    }
 
     public static IEnumerator Fade(TextMeshProUGUI textToFade, float speed)
     {
@@ -241,9 +264,13 @@ public class UIHelper : MonoBehaviour
         yield break;
     }
 
-    public static void CallFadeToTransparent(GameObject gameObjectToFade, float speed, bool isChildren)
+    public static void CallFadeToApparent(GameObject gameObjectToFade, float speed, bool isChildren)
     {
         UIHelper.Instance.StartCoroutine(UIHelper.Instance.FadeToApparent(gameObjectToFade, speed, isChildren));
+    }
+    public static void CallFadeToApparent(Image imageToFade, float speed)
+    {
+        UIHelper.Instance.StartCoroutine(UIHelper.Instance.FadeToApparent(imageToFade, speed));
     }
     /*
     public static void CallFadeToTransparent(TextMeshProUGUI textToFade, float speed)
@@ -266,6 +293,25 @@ public class UIHelper : MonoBehaviour
             current = Mathf.MoveTowards(current, target, speed * Time.deltaTime);
 
             sp.color = new Color(sp.color.r, sp.color.g, sp.color.b, current);
+
+
+            yield return null;
+        }
+
+        yield break;
+    }
+    private IEnumerator FadeToApparent(Image imageToFade, float speed)
+    {
+        float current = 0f;
+        float target = 1f;
+
+        // sp.color = new Color(sp.color.r, sp.color.g, sp.color.b, 1f);
+
+        while (current < 0.95f)
+        {
+            current = Mathf.MoveTowards(current, target, speed * Time.deltaTime);
+
+            imageToFade.color = new Color(imageToFade.color.r, imageToFade.color.g, imageToFade.color.b, current);
 
 
             yield return null;
@@ -324,15 +370,14 @@ public class UIHelper : MonoBehaviour
         float durationPerPoint = 0.02f;
         float duration = Mathf.Clamp(baseDuration + scoreToDisplay * durationPerPoint, baseDuration, 4.5f);
 
-        // AnimationCurve "easing out" : rapide au début, lent à la fin
         AnimationCurve curve = new AnimationCurve(
-            new Keyframe(0f, 0f, 2f, 2f),      // Début rapide
-            new Keyframe(0.6f, 0.85f, 0f, 0f), // Fin de montée rapide
+            new Keyframe(0f, 0f, 2f, 2f),      
+            new Keyframe(0.6f, 0.85f, 0f, 0f), 
             new Keyframe(0.75f, 0.92f, 0f, 0f), 
             new Keyframe(0.85f, 0.96f, 0f, 0f),
             new Keyframe(0.92f, 0.98f, 0f, 0f),
             new Keyframe(0.97f, 0.995f, 0f, 0f),
-            new Keyframe(1f, 1f, 0f, 0f)        // Fin très douce
+            new Keyframe(1f, 1f, 0f, 0f)        
         );
 
         while (elapsed < duration)
@@ -355,6 +400,8 @@ public class UIHelper : MonoBehaviour
     public static void DisplayTemporaryScore(TextMeshProUGUI scoreText, int playerScore)
     {
         string scoreString;
+
+        scoreText.fontSize = playerScore > 999 ? 40f : 50f;
 
         if (playerScore > 99)
         {

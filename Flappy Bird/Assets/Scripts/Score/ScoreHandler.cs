@@ -19,14 +19,8 @@ public class ScoreHandler : MonoBehaviour
     [ContextMenu("DisplayScore")]
     public void DisplayScore()
     {
-        /*
-        string scoreString0 = ((int)(playerScore / 100)).ToString();
-        string scoreString1 = (playerScore - ((int)(playerScore / 100) * 100)).ToString();
-        string scoreString2 = ((int)(playerScore / 10)).ToString();
+        // well... I don't knom why this shit doesn't work :(
 
-
-        scoreString1 = playerScore < 
-        */
         string scoreString;
 
         if (playerScore > 99)

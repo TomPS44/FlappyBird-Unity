@@ -24,6 +24,8 @@ public class BirdMovement : MonoBehaviour
     [Header("Bird Movement")]
     public float flapForce;
     [SerializeField] private float gravityForce;
+
+    public Animator animator;
     
 
     void Start()
@@ -67,6 +69,15 @@ public class BirdMovement : MonoBehaviour
             bird.transform.position = Vector3.Lerp(startVector,
                                                    endVector,
                                                    curve.Evaluate(current));
+        }
+
+        if (isFinished && isPlaying)
+        {
+            animator.speed = 0f;
+        }
+        if (!isFinished)
+        {
+            animator.speed = 1f;
         }
 
         // -----------------------------------------------

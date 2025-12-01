@@ -6,7 +6,7 @@ public class GameController : MonoBehaviour
 {
     [SerializeField] private PipeController pipeController;
     [SerializeField] private BirdMovement birdMovement;
-    [SerializeField] private UIController UIController;
+    [SerializeField] private UIController uiController;  
     [SerializeField] private ScoreHandler scoreHandler;
     // [SerializeField] private BackgroundHandler backgroundHandler;
 
@@ -30,9 +30,20 @@ public class GameController : MonoBehaviour
         gameIsPlaying = false;
         gameIsFinished = false;
 
+        birdMovement.bird = Instantiate(bird, Vector3.zero, Quaternion.identity);
+        birdMovement.animator = birdMovement.bird.GetComponentInChildren<Animator>();
+
+        
+        scoreHandler.ResetScore();
+
+        uiController.ResetTempTexts();
+        uiController.ResetUIs();
+
         scoreHandler.scoreText.text = "";
 
-        birdMovement.bird = Instantiate(bird, Vector3.zero, Quaternion.identity);
+        uiController.SpawnIdleImages();
+        uiController.MoveWithSineIdleImages();
+        
     }
 
     
@@ -40,6 +51,7 @@ public class GameController : MonoBehaviour
     {
         if (!gameIsPlaying && Input.GetMouseButtonDown(0) && !gameIsFinished)
         {
+            uiController.StartCoroutine(uiController.DespawnIdleImages());
             StartGame();
         }
     }
@@ -55,7 +67,6 @@ public class GameController : MonoBehaviour
 
         // assigne birdRB de birdMovement au rb ci-dessus et flap
         birdMovement.birdRB = rb;
-        // birdMovement.birdRB.freezeRotation = true;
         rb.linearVelocity = new Vector3(0f, birdMovement.flapForce, 0f);
 
         // if (pipeSpawningCounter > 0) return; 
@@ -74,13 +85,18 @@ public class GameController : MonoBehaviour
         
 
         birdMovement.bird = Instantiate(bird, Vector3.zero, Quaternion.identity);
+        birdMovement.animator = birdMovement.bird.GetComponentInChildren<Animator>();
 
         scoreHandler.ResetScore();
 
-        UIController.ResetTempTexts();
-        UIController.ResetUIs();
+        uiController.ResetTempTexts();
+        uiController.ResetUIs();
 
         scoreHandler.scoreText.text = "";
+
+        uiController.SpawnIdleImages();
+        uiController.MoveWithSineIdleImages();
+        
         // backgroundHandler.ResetBackgrounds();
 
         // animator = bird.GetComponentInChildren<Animator>();

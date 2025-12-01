@@ -76,7 +76,7 @@ public class BackgroundHandler : MonoBehaviour
 
             float backgroundWidth = backgroundSP.sprite.rect.width / backgroundSP.sprite.pixelsPerUnit; //backgroundSP.bounds.size.x;
 
-            float distanceToAdd = Mathf.Abs(backgroundSP.bounds.extents.x - correspondingBackground.transform.position.x) * 2;
+            // float distanceToAdd = Mathf.Abs(backgroundSP.bounds.extents.x - correspondingBackground.transform.position.x) * 2;
             float xPosition = correspondingBackground.transform.position.x + backgroundWidth;
 
             Vector3 targetPos = new Vector3(/*-xPosition - distanceToAdd * 2*/ xPosition,
