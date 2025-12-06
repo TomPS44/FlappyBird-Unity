@@ -194,7 +194,7 @@ public class UIHelper : MonoBehaviour
     }
     public static void CallFade(Image imageToFade, float speed)
     {
-        UIHelper.Instance.StartCoroutine(UIHelper.Instance.Fade(imageToFade, speed));
+        UIHelper.Instance.StartCoroutine(UIHelper.Fade(imageToFade, speed));
     }
     /*
     public static void CallFade(TextMeshProUGUI textToFade, float speed)
@@ -224,7 +224,7 @@ public class UIHelper : MonoBehaviour
 
         yield break;
     }
-    private IEnumerator Fade(Image imageToFade, float speed)
+    public static IEnumerator Fade(Image imageToFade, float speed)
     {
         float current = 1f;
         float target = 0f;
@@ -268,10 +268,12 @@ public class UIHelper : MonoBehaviour
     {
         UIHelper.Instance.StartCoroutine(UIHelper.Instance.FadeToApparent(gameObjectToFade, speed, isChildren));
     }
+    
     public static void CallFadeToApparent(Image imageToFade, float speed)
     {
-        UIHelper.Instance.StartCoroutine(UIHelper.Instance.FadeToApparent(imageToFade, speed));
+        UIHelper.Instance.StartCoroutine(UIHelper.FadeToApparent(imageToFade, speed));
     }
+    
     /*
     public static void CallFadeToTransparent(TextMeshProUGUI textToFade, float speed)
     {
@@ -300,7 +302,7 @@ public class UIHelper : MonoBehaviour
 
         yield break;
     }
-    private IEnumerator FadeToApparent(Image imageToFade, float speed)
+    public static IEnumerator FadeToApparent(Image imageToFade, float speed)
     {
         float current = 0f;
         float target = 1f;

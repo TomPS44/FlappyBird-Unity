@@ -13,7 +13,7 @@ public class BirdController : MonoBehaviour
         scripts = GameObject.FindWithTag("Scripts");
         gameController = scripts.GetComponent<GameController>();
         UIController = GameObject.Find("UIScripts").GetComponent<UIController>();
-        scoreHandler = GameObject.Find("UIScripts").GetComponent<ScoreHandler>();
+        scoreHandler = GameObject.Find("ScoreScripts").GetComponent<ScoreHandler>();
         animator = gameController.bird.GetComponentInChildren<Animator>();
     }
 
@@ -35,14 +35,19 @@ public class BirdController : MonoBehaviour
             // animator.SetBool("isFinished", true);
 
             scoreHandler.FadeScore();
+            scoreHandler.SetBestScore();
 
             gameController.OnPlayerLose?.Invoke();
+
+            scoreHandler.ResetDifficulty();
         }
 
         if (collision.CompareTag("Score"))
         {
             scoreHandler.AddScore();
             scoreHandler.DisplayScore();
+
+            scoreHandler.IncreaseDifficulty();
         }
     }
 }

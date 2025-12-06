@@ -1,4 +1,5 @@
 using System;
+using System.Threading.Tasks;
 using UnityEditor.SearchService;
 using UnityEngine;
 
@@ -51,6 +52,10 @@ public class GameController : MonoBehaviour
     {
         if (!gameIsPlaying && Input.GetMouseButtonDown(0) && !gameIsFinished)
         {
+            // disables the plyaer capacity to start the game if the "READY" image is not in its idle state 
+            if (!uiController.isGameReady) 
+                return;
+
             uiController.StartCoroutine(uiController.DespawnIdleImages());
             StartGame();
         }
@@ -58,10 +63,7 @@ public class GameController : MonoBehaviour
 
     public void StartGame()
     {
-        gameIsPlaying = true;
-        gameIsFinished = false;
-
-        // ajoute le rb � l'oiseau et l'assigne � une valeur
+        // ajoute le rb l'oiseau et l'assigne une valeur
         birdMovement.bird.AddComponent<Rigidbody2D>();
         Rigidbody2D rb = birdMovement.bird.GetComponent<Rigidbody2D>();
 
@@ -73,6 +75,9 @@ public class GameController : MonoBehaviour
         pipeController.StartWaitForSpawn();
 
         scoreHandler.DisplayScore();
+
+        gameIsPlaying = true;
+        gameIsFinished = false;
     }
 
     public void RestartGame()
@@ -83,10 +88,6 @@ public class GameController : MonoBehaviour
         gameIsFinished = false;
 
         
-
-        birdMovement.bird = Instantiate(bird, Vector3.zero, Quaternion.identity);
-        birdMovement.animator = birdMovement.bird.GetComponentInChildren<Animator>();
-
         scoreHandler.ResetScore();
 
         uiController.ResetTempTexts();
@@ -96,6 +97,10 @@ public class GameController : MonoBehaviour
 
         uiController.SpawnIdleImages();
         uiController.MoveWithSineIdleImages();
+
+        birdMovement.bird = Instantiate(bird, Vector3.zero, Quaternion.identity);
+        birdMovement.animator = birdMovement.bird.GetComponentInChildren<Animator>();
+
         
         // backgroundHandler.ResetBackgrounds();
 

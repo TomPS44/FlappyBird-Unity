@@ -15,7 +15,18 @@ public class PipeController : MonoBehaviour
 
     [Header("Pipe Movement Variables")]
     public float moveSpeed;
-    
+    public float spawnSpeed;
+
+    /*    same as the other comment below
+    private int amount = 0;
+    */
+
+    void Start()
+    {
+        moveSpeed = 3f;
+        spawnSpeed = 2f;
+    }
+
     void Update()
     {
         isPlaying = gameController.gameIsPlaying;
@@ -50,7 +61,32 @@ public class PipeController : MonoBehaviour
     {
         if (!isFinished) SpawnPipe();
 
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(spawnSpeed);
         if (!isFinished) yield return StartCoroutine(WaitForSpawn());
+    }
+
+
+    public void IncreaseDifficulty()
+    {
+        moveSpeed += 0.5f * 1f/3f;
+        spawnSpeed -= 0.3f * 1f/3f;
+
+        /*   all that was jun a fun litle thing to do, it's useless :)
+        amount++;
+
+        string eeeeeee = "e";
+        for (int i = 0; i < amount; i++)
+        {
+            eeeeeee += "e";   
+        }
+
+        Debug.Log($"Increasing sp{eeeeeee}d !!!!!!!!!!!");
+        */
+    }
+
+    internal void ResetSpeeds()
+    {
+        moveSpeed = 3f;
+        spawnSpeed = 2f;
     }
 }
