@@ -8095,6 +8095,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameController: {fileID: 1712529289}
+  scoreHandler: {fileID: 1459977705}
   isPlaying: 0
   topPipe: {fileID: 7425603996208784345, guid: 73e738b03e740be42b8f58b71887562c, type: 3}
   bottomPipe: {fileID: 7329896223044968451, guid: e69b1b38d69c724448685df5779d7266, type: 3}

@@ -1,9 +1,11 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.Rendering;
 
 public class PipeController : MonoBehaviour
 {
     [SerializeField] private GameController gameController;
+    [SerializeField] private ScoreHandler scoreHandler;
     [HideInInspector] public bool isPlaying;
     private bool isFinished;
 
@@ -42,7 +44,7 @@ public class PipeController : MonoBehaviour
         temporaryBottomPipe = Instantiate(bottomPipe, temporarySpawnPoint, Quaternion.identity);
 
         // get le spawn point du bottom pipe
-        float yDifference = temporaryBottomPipe.transform.position.y + Random.Range(2.5f, 3.5f);
+        float yDifference = temporaryBottomPipe.transform.position.y + GetYPosPipe();
         temporarySpawnPoint = new Vector3(10f, yDifference, 0f);
 
         // spawn the bottom pipe 
@@ -84,9 +86,27 @@ public class PipeController : MonoBehaviour
         */
     }
 
-    internal void ResetSpeeds()
+    public void ResetSpeeds()
     {
         moveSpeed = 3f;
         spawnSpeed = 2f;
+    }
+
+    private float GetYPosPipe()
+    {
+        // return a random value between 2.25f and 3.5f, depending on the player score
+
+        float minValue = 2.25f;
+        float maxValue = 3.5f;
+        int playerScore = scoreHandler.playerScore;
+
+        // float minValueToClamp = minValue + 2f ;
+        float maxValueToClamp = Mathf.Clamp(maxValue - playerScore * 0.005f + Random.Range(0f, 0.1f), 3f, maxValue);
+
+        float offsetY = Random.Range(minValue, maxValueToClamp);
+
+        Debug.Log(offsetY);
+
+        return offsetY;
     }
 }
