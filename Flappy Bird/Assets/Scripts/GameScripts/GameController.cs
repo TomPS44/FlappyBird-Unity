@@ -107,4 +107,11 @@ public class GameController : MonoBehaviour
         // animator = bird.GetComponentInChildren<Animator>();
         // animator.SetBool("isFinished", false);
     }
+
+    public void LoadMainMenu()
+    {
+        GameManager manager = GameObject.Find("GameManager").GetComponent<GameManager>();
+
+        manager.LoadMainMenu();
+    }
 }

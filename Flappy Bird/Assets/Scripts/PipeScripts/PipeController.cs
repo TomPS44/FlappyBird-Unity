@@ -105,7 +105,7 @@ public class PipeController : MonoBehaviour
 
         float offsetY = Random.Range(minValue, maxValueToClamp);
 
-        Debug.Log(offsetY);
+        // Debug.Log(offsetY);
 
         return offsetY;
     }

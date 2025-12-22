@@ -93,7 +93,7 @@ public class UIHelper : MonoBehaviour
     {
         UIHelper.Instance.StartCoroutine(UIHelper.Instance.CustomLerp(image, targetPos, speed, curve));
     }
-    IEnumerator CustomLerp(Image image, Vector3 targetPos, float speed, AnimationCurve curve)
+    public IEnumerator CustomLerp(Image image, Vector3 targetPos, float speed, AnimationCurve curve)
     {
         float current = 0;
         float target = 1;
@@ -222,6 +222,8 @@ public class UIHelper : MonoBehaviour
             yield return null;
         }
 
+        sp.color = new Color(sp.color.r, sp.color.g, sp.color.b, 0f);
+
         yield break;
     }
     public static IEnumerator Fade(Image imageToFade, float speed)
@@ -240,6 +242,8 @@ public class UIHelper : MonoBehaviour
 
             yield return null;
         }
+
+        imageToFade.color = new Color(imageToFade.color.r, imageToFade.color.g, imageToFade.color.b, 0f);
 
         yield break;
     }
@@ -260,6 +264,8 @@ public class UIHelper : MonoBehaviour
 
             yield return null;
         }
+
+        textToFade.color = new Color(textToFade.color.r, textToFade.color.g, textToFade.color.b, 0f);
 
         yield break;
     }
@@ -300,6 +306,8 @@ public class UIHelper : MonoBehaviour
             yield return null;
         }
 
+        sp.color = new Color(sp.color.r, sp.color.g, sp.color.b, 1f);
+
         yield break;
     }
     public static IEnumerator FadeToApparent(Image imageToFade, float speed)
@@ -319,6 +327,8 @@ public class UIHelper : MonoBehaviour
             yield return null;
         }
 
+        imageToFade.color = new Color(imageToFade.color.r, imageToFade.color.g, imageToFade.color.b, 1f);
+
         yield break;
     }
     public static IEnumerator FadeToApparent(TextMeshProUGUI textToFade, float speed)
@@ -337,6 +347,8 @@ public class UIHelper : MonoBehaviour
 
             yield return null;
         }
+
+        textToFade.color = new Color(textToFade.color.r, textToFade.color.g, textToFade.color.b, 1f);
 
         yield break;
     }

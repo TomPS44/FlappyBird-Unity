@@ -180,15 +180,15 @@ public class UIController : MonoBehaviour
         Image medal;
 
         // assigns an image to the medal, depending on the score (if statements going from gold medal to no medal)
-        if (scoreHandler.playerScore >= 90)
+        if (scoreHandler.playerScore >= 100)
         {
             medal = medals[0];
         }
-        else if (scoreHandler.playerScore >= 60)
+        else if (scoreHandler.playerScore >= 50)
         {
             medal = medals[1];
         }
-        else if (scoreHandler.playerScore >= 30)
+        else if (scoreHandler.playerScore >= 25)
         {
             medal = medals[2];
         }

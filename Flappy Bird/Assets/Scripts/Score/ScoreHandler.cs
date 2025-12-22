@@ -16,6 +16,9 @@ public class ScoreHandler : MonoBehaviour
 
     [SerializeField] private PipeController pipeController;
 
+
+    private string bestScorekey = "BestScore";
+
     void Awake() 
     {
         DontDestroyOnLoad(this);
@@ -26,14 +29,16 @@ public class ScoreHandler : MonoBehaviour
         DisplayScore();
 
         playerScore = 0;
-        bestScore = 0;
+
+        bestScore = PlayerPrefs.GetInt(bestScorekey);
+        
         newBestScore = false;
     }
 
     [ContextMenu("DisplayScore")]
     public void DisplayScore()
     {
-        // well... I don't knom why this shit doesn't work :(
+        // well... I don't know why this shit doesn't work :(
 
         string scoreString;
 
@@ -79,6 +84,8 @@ public class ScoreHandler : MonoBehaviour
 
             newBestScore = true;
         }
+
+        PlayerPrefs.SetInt(bestScorekey, bestScore);
     }
 
     [ContextMenu("IncreaseDifficultyOnce")]
